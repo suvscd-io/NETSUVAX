@@ -2,10 +2,21 @@
 
 <div align="center">
 
-  <!-- Replaced ASCII art with the image below -->
-  <img src="https://user-images.githubusercontent.com/PLACEHOLDER/incognito-logo.jpg" alt="Incognito Logo" width="220"/>
+```
+         ______
+      .-'      `-.
+     /            \
+    |,  .-.  .-.  ,|
+    | )(_o/  \o_)( |
+    |/     /\     \|
+    (_     ^^     _)
+     \__|IIIIII|__/
+      | \IIIIII/ |
+      \          /
+       `--------`
+```
 
-     By SuvScd
+  By SuvScd
 
 ••••••••••••••••••••••••••••••••••••••••••
 
@@ -193,5 +204,3 @@ MIT License – see [LICENSE](LICENSE) for details
 ## ⭐ Support
 
 If you find this tool helpful, **give it a star ⭐** and share with the community!
-
-```
