@@ -5,13 +5,18 @@ from .scs import NetworkScanner
 def show_banner():
     """Display a high-quality ASCII old army bee banner in yellow."""
     banner = r"""
-           __     __
-          /  \~~~/  \
-    ,----(     ..    )
-   /      \__     __/
-  /|         (\  |(
- ^ \   /___\  /\ |
-    |__|   |__|-"
+                        ______
+          .-'      `-.
+         /            \
+        |,  .-.  .-.  ,|
+        | )(_o/  \o_)( |
+        |/     /\     \|
+        (_     ^^     _)
+         \__|IIIIII|__/
+          | \IIIIII/ |
+          \          /
+           `--------`
+
 
          ═══ By SuvScd ═══
     ••••••••••••••••••••••••••••••••
