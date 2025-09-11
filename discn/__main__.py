@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-     By SuvScd
+SCS - By SuvScd
 Main entry point for the application
 """
 
