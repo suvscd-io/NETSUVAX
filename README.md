@@ -174,16 +174,6 @@ sudo python main.py scan --targets "target" --ports "ports" --scan-type syn
 python main.py scan --targets "target" --ports "ports" --timeout 0.3 --threads 300
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 
 ## 📄 License
 
