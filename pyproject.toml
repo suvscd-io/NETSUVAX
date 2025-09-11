@@ -46,9 +46,9 @@ dev = [
 scs = "discn.cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/YourUsername/SCS"
-Repository = "https://github.com/YourUsername/SCS.git"
-Issues = "https://github.com/YourUsername/SCS/issues"
+Homepage = "https://github.com/suvscd-io/SCS"
+Repository = "https://github.com/suvscd-io/SCS.git"
+Issues = "https://github.com/suvscd-io/SCS/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
