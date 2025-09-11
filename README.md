@@ -2,18 +2,13 @@
 
 <div align="center">
 
-
- ███████  ███████  ███████           •><•
- ██       ██       ██                ^^v^^
- ███████  ██       ███████          •><•><•
-       ██ ██             ██         ^^vvv^^
- ███████  ███████  ███████          •><•><•
+███████  ███████  ███████           •><•
+██       ██       ██                ^^v^^
+███████  ██       ███████          •><•><•
+      ██ ██             ██         ^^vvv^^
+███████  ███████  ███████          •><•><•
                                       ^^^
-         ═══ By SuvScd ═══
-
-••••••••••••••••••••••••••••••••••••••••••
-
-**SCS 🐝 – A fast, versatile, and professional Python-based network scanner for cybersecurity and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and export to JSON/CSV.**
+    ═══ By SuvScd ═══
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -21,170 +16,126 @@
 
 </div>
 
+---
 
-## 📋 Overview
+## 🚀 Overview
 
-**SCS** is a **powerful CLI-based network scanning tool** designed for cybersecurity enthusiasts, penetration testers, and network administrators.
-It allows **fast TCP and SYN port scanning** with features like **banner grabbing, multi-threading, real-time progress display**, and **exportable results**.
+**SCS** is a fast, professional Python CLI network scanner for cybersecurity and network administration.
+It supports high-speed TCP/SYN scans, banner grabbing, multi-threading, and export to JSON/CSV.
 
-## ✨ Key Features
+---
 
-* 🚀 **High-Speed Multi-threaded Scanning** – scan multiple ports simultaneously
-* 🔍 **Multiple Scan Types** – TCP Connect and SYN stealth scans
-* 🎯 **Flexible Targets** – single IPs, IP ranges, CIDR networks, and hostnames
-* 🏷️ **Automatic Service Detection** – identify services and grab banners
-* 📊 **Beautiful Console Output** – progress bars, colored tables, and summaries
-* 📁 **Export Options** – save results in JSON or CSV
-* ⚡ **Optimized Performance** – configurable timeouts and threads
-* 🛡️ **Security-Oriented** – designed for authorized network assessments
+## ✨ Features
 
+- **Multi-threaded Scanning** – Fast, simultaneous port checks
+- **Scan Types** – TCP Connect & SYN (stealth) scans
+- **Flexible Targeting** – IPs, ranges, CIDRs, hostnames
+- **Service Detection** – Service IDs & banner grabbing
+- **Modern Output** – Progress bars, colored tables, summaries
+- **Export Results** – JSON & CSV support
+- **Configurable** – Custom timeouts, threads
+- **Security-Oriented** – For authorized assessments only
 
-## 🔧 Installation
+---
 
-### Prerequisites
+## ⚙️ Installation
 
-* Python **3.8+**
-* Linux OS (recommended: **Kali Linux**)
-* Root privileges (required for **SYN scanning**)
+**Prerequisites:**  
+- Python 3.8+
+- Linux (Kali recommended)
+- Root (for SYN scan)
 
-### Install from GitHub
-
+**Clone and Install:**
 ```bash
-# Clone the repo
 git clone https://github.com/YourUsername/SCS.git
 cd SCS
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Optional: install in development mode
+# (Optional) Development mode
 pip install -e .
 ```
-
-### Install Dependencies Manually
-
+**Manual Dependencies:**
 ```bash
 pip install click scapy rich
 ```
 
-## 🚀 Quick Start
+---
 
-### Basic Scan
+## 🏃 Quick Start
 
+**Basic Scan:**  
 ```bash
 python main.py scan --targets "192.168.1.1" --ports "22,80,443"
 ```
-
-### Network Range Scan
-
+**Range Scan:**  
 ```bash
 python main.py scan --targets "192.168.1.0/24" --ports "1-1000"
 ```
-
-### Stealth SYN Scan (requires sudo)
-
+**SYN Scan (root):**  
 ```bash
 sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn
 ```
 
+---
 
-## 📖 Example Use Cases
+## 📚 Example Usage
 
-### 🏠 Home Network Discovery
+- **Home Network:**  
+  `python main.py scan --targets "192.168.1.0/24" --ports "22,80,443"`
 
-```bash
-python main.py scan --targets "192.168.1.0/24" --ports "22,80,443,8080"
-python main.py scan --targets "192.168.1.0/24" --ports "1-1000" --output-json home_scan.json
-```
+- **Web Server:**  
+  `python main.py scan --targets "example.com" --ports "80,443,8080"`
 
-### 🌐 Web Server Assessment
+- **Security Audit:**  
+  `sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn`
 
-```bash
-python main.py scan --targets "example.com" --ports "80,443,8080,8443,3000,5000"
-python main.py scan --targets "webserver.com" --ports "21,22,25,53,80,443,993,995,3389"
-```
+---
 
-### 🔐 Security Assessment
+## 📦 Output Formats
 
-```bash
-sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn
-python main.py scan --targets "10.0.0.0/24" --ports "22,80,443" --banner --output-csv results.csv
-```
+- **Console:** Progress bar, colored table, summary
+- **JSON:**
+  ```json
+  [{"target": "192.168.1.1", "port": 22, "status": "open", "service": "SSH", "banner": "SSH-2.0-OpenSSH_8.0", "timestamp": 1694123456.789}]
+  ```
+- **CSV:**
+  ```csv
+  target,port,status,service,banner,timestamp
+  192.168.1.1,22,open,SSH,SSH-2.0-OpenSSH_8.0,1694123456.789
+  ```
 
+---
 
-## 📊 Output Formats
+## 🛡️ Ethics & Security
 
-### Console Output
+- Only scan networks you **own** or have explicit **permission**
+- Use SYN scan responsibly
+- Respect network policies and rate-limit scans
 
-* Real-time progress bars and colored tables
-* Summary statistics and status of each port
+---
 
-### JSON Example
+## 🛠️ Troubleshooting
 
-```json
-[
-  {
-    "target": "192.168.1.1",
-    "port": 22,
-    "status": "open",
-    "service": "SSH",
-    "banner": "SSH-2.0-OpenSSH_8.0",
-    "timestamp": 1694123456.789
-  }
-]
-```
+- **Missing module:**  
+  `pip install -e . && PYTHONPATH=. python main.py ...`
+- **SYN scan requires root:**  
+  `sudo python main.py ... --scan-type syn`
+- **Slow scan:**  
+  `python main.py ... --timeout 0.3 --threads 300`
 
-### CSV Example
-
-```csv
-target,port,status,service,banner,timestamp
-192.168.1.1,22,open,SSH,SSH-2.0-OpenSSH_8.0,1694123456.789
-```
-
-
-
-## 🛡️ Security & Ethics
-
-* Only scan networks you **own** or have **explicit permission** to test
-* Use stealth scans (**SYN**) only in authorized environments
-* Be mindful of **network policies** and security alerts
-* Rate-limit scans to avoid overloading targets
-
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-**❌ Missing module**
-
-```bash
-pip install -e .
-PYTHONPATH=. python main.py scan --targets "target" --ports "ports"
-```
-
-**❌ SYN scan requires root**
-
-```bash
-sudo python main.py scan --targets "target" --ports "ports" --scan-type syn
-```
-
-**❌ Slow scanning**
-
-```bash
-python main.py scan --targets "target" --ports "ports" --timeout 0.3 --threads 300
-```
-
+---
 
 ## 📄 License
 
-MIT License – see [LICENSE](LICENSE) for details
+MIT – see [LICENSE](LICENSE)
 
+---
 
-## 🐝 Author
+## 👤 Author
 
-**SuvScd** – Creator of **SCS**
+**SuvScd**
 
+---
 
 ## ⭐ Support
 
-If you find this tool helpful, **give it a star ⭐** and share with the community!
+If you find this tool helpful, please **star** ⭐ and share!
