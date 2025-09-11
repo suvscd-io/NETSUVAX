@@ -2,17 +2,14 @@
 
 <div align="center">
 
-  ███████  ███████  ███████           
-  ██       ██       ██               
-  ███████  ██       ███████          
-  ██ ██             ██         
-  ███████  ███████  ███████       
-     
+  <!-- Replaced ASCII art with the image below -->
+  <img src="https://user-images.githubusercontent.com/PLACEHOLDER/incognito-logo.jpg" alt="Incognito Logo" width="220"/>
+
      By SuvScd
 
 ••••••••••••••••••••••••••••••••••••••••••
 
-**SCS 🐝 – A fast, versatile, and professional Python-based network scanner for cybersecurity professionals and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and export to JSON/CSV.**
+**SCS 🐝 – A fast, versatile, and professional Python-based network scanner for cybersecurity professionals and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and more.**
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -196,3 +193,5 @@ MIT License – see [LICENSE](LICENSE) for details
 ## ⭐ Support
 
 If you find this tool helpful, **give it a star ⭐** and share with the community!
+
+```
