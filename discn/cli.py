@@ -3,18 +3,20 @@ import os
 from .scs import NetworkScanner
 
 def show_banner():
-    """Display modern SCS ASCII banner with bee"""
-    banner = """
- ███████  ███████  ███████           •><•
- ██       ██       ██                ^^v^^
- ███████  ██       ███████          •><•><•
-       ██ ██             ██         ^^vvv^^
- ███████  ███████  ███████          •><•><•
-                                      ^^^
+    """Display a high-quality ASCII old army bee banner in yellow."""
+    banner = r"""
+           __     __
+          /  \~~~/  \
+    ,----(     ..    )
+   /      \__     __/
+  /|         (\  |(
+ ^ \   /___\  /\ |
+    |__|   |__|-"
+
          ═══ By SuvScd ═══
     ••••••••••••••••••••••••••••••••
 """
-    click.echo(click.style(banner, fg="cyan", bold=True))
+    click.echo(click.style(banner, fg="yellow", bold=True))
 
 @click.group()
 def cli():
@@ -34,8 +36,8 @@ def scan(targets, ports, scan_type, output_json, output_csv, timeout, threads, b
     """
     Perform a network scan directly from the command line.
     """
-    show_banner()  # 🎨 BANNER SCS AJOUTÉ ICI !
-    
+    show_banner()
+
     if scan_type == 'syn' and os.geteuid() != 0:
         click.echo(click.style("[-] SYN scan requires root privileges. Please run with sudo.", fg="red"))
         return
