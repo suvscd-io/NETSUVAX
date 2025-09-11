@@ -4,7 +4,7 @@ from .scs import NetworkScanner
 
 def show_banner():
     banner = r"""
-                       
+             ______          
           .-'      `-.
          /            \
         |,  .-.  .-.  ,|
