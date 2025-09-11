@@ -167,8 +167,11 @@ class NetworkScanner:
         """Safely grab banner from socket with timeout"""
         try:
             sock.settimeout(self.timeout)
-            banner = sock.recv(1024).decode('utf-8', errors='ignore').strip()
-            return banner[:500]  # Limit banner length
+            banner = sock.recv(1024)
+            try:
+                return banner.decode('utf-8', errors='ignore').strip()[:500]  # Limit banner length
+            except Exception:
+                return ''
         except (socket.timeout, socket.error, UnicodeDecodeError):
             return ''
 
@@ -257,9 +260,8 @@ class NetworkScanner:
                 else:
                     status, banner = 'error', 'Invalid scan type'
 
-                service = self._identify_service(port, banner)
-
                 if status == 'open':
+                    service = self._identify_service(port, banner)
                     result = {
                         'target': target,
                         'port': port,
@@ -270,6 +272,9 @@ class NetworkScanner:
                     }
                     with self.lock:
                         self.results.append(result)
+                elif status == 'error':
+                    # Log error, but do not add to results
+                    console.print(f"[red]Scan error on {target}:{port}: {banner}[/red]")
 
                 self.scan_queue.task_done()
 
@@ -345,7 +350,8 @@ class NetworkScanner:
 
     def _print_results_table(self):
         """Print scan results in a formatted table"""
-        if not self.results:
+        open_results = [r for r in self.results if r.get('status') == 'open']
+        if not open_results:
             console.print("\n[yellow]No open ports found.[/yellow]")
             return
 
@@ -356,7 +362,7 @@ class NetworkScanner:
         table.add_column("Service", style="blue")
         table.add_column("Banner", style="yellow")
 
-        for result in sorted(self.results, key=lambda x: (ipaddress.ip_address(x['target']), x['port'])):
+        for result in sorted(open_results, key=lambda x: (ipaddress.ip_address(x['target']), x['port'])):
             banner_preview = (result['banner'][:60] + '...') if len(result['banner']) > 60 else result['banner']
             table.add_row(
                 result['target'],
@@ -367,30 +373,32 @@ class NetworkScanner:
             )
 
         console.print(table)
-        console.print(f"\n[green]Found {len(self.results)} open ports[/green]")
+        console.print(f"\n[green]Found {len(open_results)} open ports[/green]")
 
     def export_json(self, filename):
         """Export results to JSON file"""
-        if not self.results:
+        export_results = [r for r in self.results if r.get('status') == 'open']
+        if not export_results:
             console.print("[yellow]No results to export[/yellow]")
             return
 
         try:
             with open(filename, 'w') as f:
-                json.dump(self.results, f, indent=2, default=str)
+                json.dump(export_results, f, indent=2, default=str)
             console.print(f"\n[green]Results exported to {filename}[/green]")
         except IOError as e:
             console.print(f"\n[bold red]Error exporting to JSON: {e}[/bold red]")
 
     def export_csv(self, filename):
         """Export results to CSV file"""
-        if not self.results:
+        export_results = [r for r in self.results if r.get('status') == 'open']
+        if not export_results:
             console.print("[yellow]No results to export[/yellow]")
             return
 
         # Gather all keys across all results for CSV header
         all_keys = set()
-        for r in self.results:
+        for r in export_results:
             all_keys.update(r.keys())
         fieldnames = sorted(all_keys)
 
@@ -398,7 +406,7 @@ class NetworkScanner:
             with open(filename, 'w', newline='') as f:
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
-                writer.writerows(self.results)
+                writer.writerows(export_results)
             console.print(f"\n[green]Results exported to {filename}[/green]")
         except IOError as e:
             console.print(f"\n[bold red]Error exporting to CSV: {e}[/bold red]")
