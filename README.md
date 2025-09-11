@@ -1,4 +1,4 @@
-# SCS 🐝
+# SCS 
 
 <div align="center">
 
