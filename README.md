@@ -196,7 +196,7 @@ Contributions are welcome!
 MIT License – see [LICENSE](LICENSE) for details
 
 
-## 🐝 Author
+##  Author
 
 **SuvScd** – Creator of **SCS**
 
