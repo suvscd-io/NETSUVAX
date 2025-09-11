@@ -3,7 +3,6 @@ import os
 from .scs import NetworkScanner
 
 def show_banner():
-    """Display a high-quality ASCII old army bee banner in yellow."""
     banner = r"""
                         ______
           .-'      `-.
@@ -21,7 +20,7 @@ def show_banner():
          ═══ By SuvScd ═══
     ••••••••••••••••••••••••••••••••
 """
-    click.echo(click.style(banner, fg="yellow", bold=True))
+    click.echo(click.style(banner, fg="blue", bold=True))
 
 @click.group()
 def cli():
