@@ -1,4 +1,4 @@
-# SCS 🐝
+# SCS 
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 ••••••••••••••••••••••••••••••••••••••••••
 
-**SCS 🐝 – A fast, versatile, and professional Python-based network scanner for cybersecurity professionals and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and more.**
+**SCS  – A fast, versatile, and professional Python-based network scanner for cybersecurity professionals and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and more.**
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
