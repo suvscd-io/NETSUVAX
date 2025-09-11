@@ -1,4 +1,4 @@
-# SCS 
+# SCS 🐝
 
 <div align="center">
 
@@ -14,6 +14,7 @@
       | \IIIIII/ |
       \          /
        `--------`
+```
 
   By SuvScd
 
