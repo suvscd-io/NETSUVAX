@@ -69,52 +69,64 @@ pip install click scapy rich
 
 ## 🚀 Quick Start
 
+Once installed globally, you can run the tool using the `netsuvax` command natively from anywhere.
+
 ### Basic TCP Scan
 
 ```bash
-python -m discn scan --targets "192.168.1.1" --ports "22,80,443"
+netsuvax scan --targets "192.168.1.1" --ports "22,80,443"
 ```
 
 ### Fast Ping Sweep (Host Discovery)
 
 ```bash
-python -m discn scan --targets "192.168.1.0/24" --scan-type ping
+netsuvax scan --targets "192.168.1.0/24" --scan-type ping
 ```
 
 ### Deep Network Range UDP Scan (requires sudo)
 
 ```bash
-sudo python -m discn scan --targets "10.0.0.0/16" --scan-type udp --ports "53,161"
+sudo netsuvax scan --targets "10.0.0.0/16" --scan-type udp --ports "53,161"
 ```
 
 ### Stealth SYN Scan (requires sudo)
 
 ```bash
-sudo python -m discn scan --targets "target.com" --ports "1-1000" --scan-type syn
+sudo netsuvax scan --targets "target.com" --ports "1-1000" --scan-type syn
 ```
 
+## ⚙️ Advanced Configuration Parameters
+
+NETSUVAX is highly configurable and optimized for massive scale reconnaissance arrays. You can pass the following parameters to manually control speed, resource constraints, and data outputs:
+
+* `--threads <INT>`: Override the default concurrent thread count (default: 200). Use `500` or `1000` for deep /16 subnet TCP scans.
+* `--timeout <FLOAT>`: Connection timeout for targets on port checks (default: 0.5 seconds). Lower this heavily for dense network sweeps.
+* `--scan-type <tcp|syn|udp|ping>`: Explicitly state the traversal type. Ping will disregard all port logic and execute native OS ICMP.
+* `--no-banner`: Disables text-level probing on Open ports for faster throughput.
+* `--verbose`: Ejects the raw exceptions during errors for runtime debugging.
+* `--output-json <FILE>` / `--output-csv <FILE>`: Generates complete matrix data files at runtime.
 
 ## 📖 Example Use Cases
 
 ### 🏠 Home Network Discovery
 
 ```bash
-python -m discn scan --targets "192.168.1.0/24" --ports "22,80,443,8080"
-python -m discn scan --targets "192.168.1.0/24" --scan-type ping --output-json home_scan.json
+netsuvax scan --targets "192.168.1.0/24" --ports "22,80,443,8080"
+netsuvax scan --targets "192.168.1.0/24" --scan-type ping --output-json home_scan.json
 ```
 
 ### 🌐 Web Server Assessment
 
 ```bash
-python -m discn scan --targets "example.com" --ports "80,443,8080,8443,3000,5000"
-python -m discn scan --targets "webserver.com" --scan-type tcp --ports "1-10000"
+netsuvax scan --targets "example.com" --ports "80,443,8080,8443,3000,5000"
+netsuvax scan --targets "webserver.com" --scan-type tcp --ports "1-10000"
 ```
 
 ### 🔐 Security Assessment
 
 ```bash
-sudo python -m discn scan --targets "target.com" --ports "1-1000" --scan-type syn
-python -m discn scan --targets "10.0.0.0/24" --ports "22,80,443" --banner --output-csv results.csv --verbose
+sudo netsuvax scan --targets "target.com" --ports "1-1000" --scan-type syn
+netsuvax scan --targets "10.0.0.0/24" --ports "22,80,443" --banner --output-csv results.csv --verbose
 ```
 
 
@@ -166,19 +178,19 @@ If you encounter an "externally-managed-environment" error on newer Linux distri
 
 ```bash
 pip install -e . --break-system-packages
-python -m discn scan --targets "target" --ports "ports"
+netsuvax scan --targets "target" --ports "ports"
 ```
 
 **❌ SYN scan requires root**
 
 ```bash
-sudo python -m discn scan --targets "target" --ports "ports" --scan-type syn
+sudo netsuvax scan --targets "target" --ports "ports" --scan-type syn
 ```
 
 **❌ Optimizing large scans**
 
 ```bash
-python -m discn scan --targets "target" --ports "ports" --timeout 0.3 --threads 500 --no-banner
+netsuvax scan --targets "target" --ports "ports" --timeout 0.3 --threads 500 --no-banner
 ```
 
 
