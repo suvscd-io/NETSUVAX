@@ -11,9 +11,10 @@ import concurrent.futures
 
 from scapy.all import IP, TCP, UDP, ICMP, sr1, conf
 from rich.console import Console
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
+from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn, TotalFileSizeColumn
 from rich.table import Table
 from rich.panel import Panel
+from rich import box
 
 # Disable Scapy's verbose output
 conf.verb = 0
@@ -271,41 +272,69 @@ class NetworkScanner:
     def run_scan_cli(self):
         try:
             summary = (
-                f"[bold cyan]Targets:[/bold cyan] {len(self.targets)}\n"
-                f"[bold cyan]Ports per Target:[/bold cyan] {len(self.ports) if self.ports else 'N/A'}\n"
-                f"[bold cyan]Scan Type:[/bold cyan] {self.scan_type.upper()}\n"
-                f"[bold cyan]Threads:[/bold cyan] {self.threads}\n"
-                f"[bold cyan]Timeout:[/bold cyan] {self.timeout}s"
+                f"[bold bright_green]Total Targets:[/bold bright_green] [white]{len(self.targets)}[/white]\n"
+                f"[bold bright_green]Ports Target:[/bold bright_green] [white]{len(self.ports) if self.ports else 'N/A'}[/white]\n"
+                f"[bold bright_green]Scan Mode:[/bold bright_green] [bright_yellow]{self.scan_type.upper()}[/bright_yellow]\n"
+                f"[bold bright_green]Threads:[/bold bright_green] [white]{self.threads}[/white]\n"
+                f"[bold bright_green]Timeout:[/bold bright_green] [white]{self.timeout}s[/white]"
             )
-            console.print(Panel(summary, title="[bold magenta]Scan Configuration[/bold magenta]", expand=False))
+            console.print(Panel(summary, title="[bold bright_magenta]❖ NETSUVAX Scan Initialized ❖[/bold bright_magenta]", border_style="bright_cyan", box=box.HEAVY, expand=False))
 
-            tasks = []
             if self.scan_type == 'ping':
-                tasks = [(target, None) for target in self.targets]
+                total_tasks = len(self.targets)
             else:
-                tasks = [(target, port) for target in self.targets for port in self.ports]
-                
-            total_tasks = len(tasks)
+                total_tasks = len(self.targets) * len(self.ports)
+
+            def task_generator():
+                if self.scan_type == 'ping':
+                    for target in self.targets:
+                        yield target, None
+                else:
+                    for target in self.targets:
+                        for port in self.ports:
+                            yield target, port
+
+            tasks_gen = task_generator()
 
             with Progress(
-                SpinnerColumn(),
-                TextColumn("[progress.description]{task.description}"),
-                BarColumn(bar_width=40),
-                TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+                SpinnerColumn(spinner_name="dots2"),
+                TextColumn("[bold bright_cyan]{task.description}"),
+                BarColumn(bar_width=50, style="bright_black", complete_style="bright_green"),
+                TextColumn("[bold bright_white]{task.percentage:>3.0f}%"),
                 TimeElapsedColumn(),
                 console=console
             ) as progress:
-                task_id = progress.add_task(f"[cyan]Scanning...", total=total_tasks)
+                task_id = progress.add_task(f"Scanning the network lattice...", total=total_tasks)
 
                 with concurrent.futures.ThreadPoolExecutor(max_workers=self.threads) as executor:
-                    futures = [executor.submit(self._scan_worker, t[0], t[1]) for t in tasks]
-                    for future in concurrent.futures.as_completed(futures):
+                    futures = set() # type: set[concurrent.futures.Future]
+                    
+                    # Submit an initial batch of limited futures to avoid overloading memory
+                    for _ in range(min(total_tasks, self.threads * 2)):
                         try:
-                            future.result()
-                        except Exception as e:
-                            # Silently handle thread crashes to keep progress moving
-                            pass
-                        progress.update(task_id, advance=1)
+                            t = next(tasks_gen)
+                            futures.add(executor.submit(self._scan_worker, t[0], t[1]))
+                        except StopIteration:
+                            break
+                            
+                    while futures:
+                        # Wait for at least one task to complete
+                        done, not_done = concurrent.futures.wait(futures, return_when=concurrent.futures.FIRST_COMPLETED)
+                        futures = not_done
+                        for future in done:
+                            try:
+                                future.result()
+                            except Exception:
+                                pass
+                            
+                            progress.update(task_id, advance=1)
+                            
+                            # Replace finished task with a new one from generator
+                            try:
+                                t = next(tasks_gen)
+                                futures.add(executor.submit(self._scan_worker, t[0], t[1]))
+                            except StopIteration:
+                                pass
 
             self._print_results_table()
             return self.results
@@ -323,20 +352,28 @@ class NetworkScanner:
             console.print("\n[yellow]No positive results found.[/yellow]")
             return
 
-        table = Table(title="Scan Results", show_header=True, header_style="bold magenta", border_style="cyan")
-        table.add_column("Target IP", style="bright_cyan")
-        table.add_column("Port", style="green")
-        table.add_column("Status", style="bright_green")
-        table.add_column("Service", style="blue")
-        table.add_column("Banner", style="yellow")
+        table = Table(
+            title="[bold bright_green]❖ NETSUVAX Security Report ❖[/bold bright_green]", 
+            show_header=True, 
+            header_style="bold bright_magenta", 
+            border_style="bright_cyan",
+            box=box.HEAVY_EDGE,
+            title_justify="center"
+        )
+        table.add_column("Target IP", style="bright_cyan", justify="center")
+        table.add_column("Port", style="bright_yellow", justify="center")
+        table.add_column("Status", style="bold bright_green", justify="center")
+        table.add_column("Service", style="bright_white", justify="left")
+        table.add_column("Banner/Data", style="bright_black", justify="left")
 
         for result in sorted(success_results, key=lambda x: (ipaddress.ip_address(x['target']), x['port'] if isinstance(x['port'], int) else 0)):
-            banner_preview = (result['banner'][:60] + '...') if len(result['banner']) > 60 else result['banner']
+            banner_str = str(result['banner'])
+            banner_preview = (banner_str[:60] + '...') if len(banner_str) > 60 else banner_str
             table.add_row(
-                result['target'],
+                str(result['target']),
                 str(result['port']),
-                result['status'],
-                result['service'],
+                str(result['status']),
+                str(result['service']),
                 banner_preview
             )
 
@@ -346,6 +383,7 @@ class NetworkScanner:
     def export_json(self, filename):
         export_results = [r for r in self.results if r.get('status') in ['open', 'open|filtered', 'alive']]
         if not export_results:
+            console.print("[yellow]No results to export[/yellow]")
             return
 
         try:
@@ -358,6 +396,7 @@ class NetworkScanner:
     def export_csv(self, filename):
         export_results = [r for r in self.results if r.get('status') in ['open', 'open|filtered', 'alive']]
         if not export_results:
+            console.print("[yellow]No results to export[/yellow]")
             return
 
         all_keys = set()

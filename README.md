@@ -1,53 +1,42 @@
-# SCS 
+# ❖ NETSUVAX ❖
 
 <div align="center">
 
 ```
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠁⣸⣷⣄⠀⣀⣤⣾⣯⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠈⢿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⢻⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⠃⠀⣀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡤⠄⠈⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⠀⠉⠉⠉⣙⣿⣯⣽⣿⣿⣍⣿⣿⣿⣿⢀⣀⠀⠀⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⡄⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⢀⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣷⡀⠀⠀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⡀⠀⣼⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣷⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+    _   _ ______ _____ _____ _    _  _    _   __   _   _ 
+   | \ | |  ____|_   _/ ____| |  | || |  | |  \ \ / /  | |
+   |  \| | |__    | || (___ | |  | || |  | |   \ V /   | |
+   | . ` |  __|   | | \___ \| |  | || |  | |    > <    | |
+   | |\  | |____ _| |_____) | |__| |\ \_/ /    / . \   |_|
+   |_| \_|______|_____|_____/ \____/  \___/    /_/ \_\  (_)
 ```
 
-  ====By SuvScd====
+  ====  Advanced Network Scanner By SuvScd ====
 
 ••••••••••••••••••••••••••••••••••••••••••
 
-**SCS  – A fast, versatile, and professional Python-based network scanner for cybersecurity professionals and network administrators. Supports TCP/SYN scans, banner grabbing, multi-threading, and more.**
+**NETSUVAX – A next-generation, high-performance, and beautifully designed Python network scanner built for cybersecurity professionals and extreme-scale network audits.**
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-linux-lightgrey.svg)](README.md)
+[![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows-lightgrey.svg)](README.md)
 
 </div>
 
 
 ## 📋 Overview
 
-**SCS** is a **powerful CLI-based network scanning tool** designed for cybersecurity enthusiasts, penetration testers, and network administrators.
-It allows **fast TCP and SYN port scanning** with features like **banner grabbing, multi-threading, real-time progress display**, and **exportable results**.
+**NETSUVAX** is a **next-generation CLI-based network scanning tool**. With no rigid memory caps, dynamic ThreadPool generation, and native integration with the `rich` Python library, NETSUVAX drops legacy code in favor of a sleek, rapid, and gorgeous UI designed for massive network reconnaissance arrays.
 
 ## ✨ Key Features
 
-* 🚀 **High-Speed Multi-threaded Scanning** – scan multiple ports simultaneously
-* 🔍 **Multiple Scan Types** – TCP Connect and SYN stealth scans
-* 🎯 **Flexible Targets** – single IPs, IP ranges, CIDR networks, and hostnames
-* 🏷️ **Automatic Service Detection** – identify services and grab banners
-* 📊 **Beautiful Console Output** – progress bars, colored tables, and summaries
-* 📁 **Export Options** – save results in JSON or CSV
-* ⚡ **Optimized Performance** – configurable timeouts and threads
-* 🛡️ **Security-Oriented** – designed for authorized network assessments
+* 🚀 **Uncapped Concurrent Scanning** – Dynamic thread assignment prevents `MemoryError`s even on `/8` subnets
+* 🔍 **Four Scan Matrices** – Support for TCP Connect, stealthy SYN scans, UDP verification, and fast Ping sweeping
+* 🎯 **Dynamic Parsing** – Effortlessly map single IPs, hostnames, ranges, or deep CIDR networks
+* 🏷️ **Banner Grabbing** – Extract deep meta-information instantly 
+* 🌟 **Futuristic Rich GUI** – Experience glowing progress bars, summary panels, and styled report tables
+* 📁 **JSON / CSV Exports** – Parse matrices seamlessly into standardized testing tools
+* 🛡️ **Stealth Focused** – Silent footprint designed for authorized red-team engagements
 
 
 ## 🔧 Installation
@@ -62,8 +51,8 @@ It allows **fast TCP and SYN port scanning** with features like **banner grabbin
 
 ```bash
 # Clone the repo
-git clone https://github.com/YourUsername/SCS.git
-cd SCS
+git clone https://github.com/YourUsername/NETSUVAX.git
+cd NETSUVAX
 
 # Install dependencies
 pip install -r requirements.txt
@@ -80,22 +69,28 @@ pip install click scapy rich
 
 ## 🚀 Quick Start
 
-### Basic Scan
+### Basic TCP Scan
 
 ```bash
-python main.py scan --targets "192.168.1.1" --ports "22,80,443"
+python -m discn scan --targets "192.168.1.1" --ports "22,80,443"
 ```
 
-### Network Range Scan
+### Fast Ping Sweep (Host Discovery)
 
 ```bash
-python main.py scan --targets "192.168.1.0/24" --ports "1-1000"
+python -m discn scan --targets "192.168.1.0/24" --scan-type ping
+```
+
+### Deep Network Range UDP Scan (requires sudo)
+
+```bash
+sudo python -m discn scan --targets "10.0.0.0/16" --scan-type udp --ports "53,161"
 ```
 
 ### Stealth SYN Scan (requires sudo)
 
 ```bash
-sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn
+sudo python -m discn scan --targets "target.com" --ports "1-1000" --scan-type syn
 ```
 
 
@@ -104,22 +99,22 @@ sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn
 ### 🏠 Home Network Discovery
 
 ```bash
-python main.py scan --targets "192.168.1.0/24" --ports "22,80,443,8080"
-python main.py scan --targets "192.168.1.0/24" --ports "1-1000" --output-json home_scan.json
+python -m discn scan --targets "192.168.1.0/24" --ports "22,80,443,8080"
+python -m discn scan --targets "192.168.1.0/24" --scan-type ping --output-json home_scan.json
 ```
 
 ### 🌐 Web Server Assessment
 
 ```bash
-python main.py scan --targets "example.com" --ports "80,443,8080,8443,3000,5000"
-python main.py scan --targets "webserver.com" --ports "21,22,25,53,80,443,993,995,3389"
+python -m discn scan --targets "example.com" --ports "80,443,8080,8443,3000,5000"
+python -m discn scan --targets "webserver.com" --scan-type tcp --ports "1-10000"
 ```
 
 ### 🔐 Security Assessment
 
 ```bash
-sudo python main.py scan --targets "target.com" --ports "1-1000" --scan-type syn
-python main.py scan --targets "10.0.0.0/24" --ports "22,80,443" --banner --output-csv results.csv
+sudo python -m discn scan --targets "target.com" --ports "1-1000" --scan-type syn
+python -m discn scan --targets "10.0.0.0/24" --ports "22,80,443" --banner --output-csv results.csv --verbose
 ```
 
 
@@ -169,19 +164,19 @@ target,port,status,service,banner,timestamp
 
 ```bash
 pip install -e .
-PYTHONPATH=. python main.py scan --targets "target" --ports "ports"
+python -m discn scan --targets "target" --ports "ports"
 ```
 
 **❌ SYN scan requires root**
 
 ```bash
-sudo python main.py scan --targets "target" --ports "ports" --scan-type syn
+sudo python -m discn scan --targets "target" --ports "ports" --scan-type syn
 ```
 
-**❌ Slow scanning**
+**❌ Optimizing large scans**
 
 ```bash
-python main.py scan --targets "target" --ports "ports" --timeout 0.3 --threads 300
+python -m discn scan --targets "target" --ports "ports" --timeout 0.3 --threads 500 --no-banner
 ```
 
 
@@ -192,7 +187,7 @@ MIT License – see [LICENSE](LICENSE) for details
 
 ##  Author
 
-**SuvScd** – Creator of **SCS**
+**SuvScd** – Creator of **NETSUVAX**
 
 
 ## ⭐ Support

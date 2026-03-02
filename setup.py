@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SCS
+NETSUVAX
 Setup script for installation
 """
 
@@ -12,12 +12,12 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 setup(
-    name="scs-scanner",
-    version="1.0.0",
-    description="SCS: A fast and versatile network scanner",
+    name="netsuvax-scanner",
+    version="2.0.0",
+    description="NETSUVAX: A next-generation, high-performance network scanner",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/YourUsername/SCS",
+    url="https://github.com/YourUsername/NETSUVAX",
     author="SuvScd",
     author_email="suvs@example.com",
     license="MIT",
@@ -38,7 +38,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'scs=discn.cli:cli',
+            'netsuvax=discn.cli:cli',
         ],
     },
     python_requires=">=3.8",

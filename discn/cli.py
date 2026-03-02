@@ -2,36 +2,39 @@ import click
 import os
 from discn.scs import NetworkScanner
 from rich.console import Console
+from rich.text import Text
+from rich.panel import Panel
 
 console = Console()
 
 def show_banner():
-    """Display a high-quality ASCII old army bee banner in yellow."""
-    banner = r"""
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠁⣸⣷⣄⠀⣀⣤⣾⣯⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠈⢿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⢻⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⠃⠀⣀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡤⠄⠈⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⠀⠉⠉⠉⣙⣿⣯⣽⣿⣿⣍⣿⣿⣿⣿⢀⣀⠀⠀⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⡄⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⢀⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣷⡀⠀⠀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⡀⠀⣼⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣷⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-              ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
-
-                  ═══ By SuvScd ═══
-            ••••••••••••••••••••••••••••••••
-"""
-    console.print(banner, style="bold bright_yellow")
+    """Display a high-quality modern NETSUVAX ASCII banner in glowing cyan."""
+    banner_raw = r"""
+    _   _ ______ _____ _____ _    _  _    _   __   _   _ 
+   | \ | |  ____|_   _/ ____| |  | || |  | |  \ \ / /  | |
+   |  \| | |__    | || (___ | |  | || |  | |   \ V /   | |
+   | . ` |  __|   | | \___ \| |  | || |  | |    > <    | |
+   | |\  | |____ _| |_____) | |__| |\ \_/ /    / . \   |_|
+   |_| \_|______|_____|_____/ \____/  \___/    /_/ \_\  (_)
+    """
+    
+    # Create a nice gradient-styled border panel for the banner
+    banner_text = Text(banner_raw, style="bold bright_cyan", justify="center")
+    subtitle = Text("====  Advanced Network Scanner  ====", style="bold bright_magenta", justify="center")
+    
+    panel = Panel(
+        Text.assemble(banner_text, "\n", subtitle),
+        border_style="bright_blue",
+        title="[bold bright_white]By SuvScd[/bold bright_white]",
+        title_align="right",
+        subtitle="[bold bright_green]STATUS: ONLINE[/bold bright_green]",
+        subtitle_align="left"
+    )
+    console.print(panel)
 
 @click.group()
 def cli():
-    """SCS - A fast and versatile network scanner."""
+    """NETSUVAX - A fast, modern, and versatile network scanner."""
     pass
 
 @cli.command()
@@ -43,14 +46,14 @@ def help():
   python -m discn scan --targets <IP|CIDR|range|hostname> \[OPTIONS]
 
 [bold cyan]Options:[/bold cyan]
-  [green]--ports[/green]           Port range (e.g. "1-1024") or specific ports (e.g. "22,80,443")
-  [green]--scan-type[/green]       Scan type: tcp (default), syn, udp, or ping
-  [green]--output-json[/green]     Export results to JSON file
-  [green]--output-csv[/green]      Export results to CSV file
-  [green]--timeout[/green]         Connection timeout per port in seconds (default: 0.5)
-  [green]--threads[/green]         Number of concurrent threads (default: 200)
-  [green]--banner/--no-banner[/green] Enable/disable service banner grabbing (default: enabled)
-  [green]--verbose[/green]         Enable detailed error outputs
+  [bright_green]--ports[/bright_green]           Port range (e.g. "1-1024") or specific ports (e.g. "22,80,443")
+  [bright_green]--scan-type[/bright_green]       Scan type: tcp (default), syn, udp, or ping
+  [bright_green]--output-json[/bright_green]     Export results to JSON file
+  [bright_green]--output-csv[/bright_green]      Export results to CSV file
+  [bright_green]--timeout[/bright_green]         Connection timeout per port in seconds (default: 0.5)
+  [bright_green]--threads[/bright_green]         Number of concurrent threads (default: 200)
+  [bright_green]--banner/--no-banner[/bright_green] Enable/disable service banner grabbing (default: enabled)
+  [bright_green]--verbose[/bright_green]         Enable detailed error outputs
 
 [bold cyan]Examples:[/bold cyan]
   python -m discn scan --targets "example.com" --ports "80,443"

@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "scs-scanner"
-version = "1.0.0"
-description = "SCS: A fast and versatile network scanner"
+name = "netsuvax-scanner"
+version = "2.0.0"
+description = "NETSUVAX: A next-generation, high-performance network scanner"
 readme = "README.md"
 authors = [{name = "SuvScd", email = "suvsd@gmail.com"}]
 license = {text = "MIT"}
@@ -43,12 +43,12 @@ dev = [
 ]
 
 [project.scripts]
-scs = "discn.cli:cli"
+netsuvax = "discn.cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/suvscd-io/SCS"
-Repository = "https://github.com/suvscd-io/SCS.git"
-Issues = "https://github.com/suvscd-io/SCS/issues"
+Homepage = "https://github.com/suvscd-io/NETSUVAX"
+Repository = "https://github.com/suvscd-io/NETSUVAX.git"
+Issues = "https://github.com/suvscd-io/NETSUVAX/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
