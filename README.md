@@ -160,10 +160,12 @@ target,port,status,service,banner,timestamp
 
 ### Common Issues
 
-**❌ Missing module**
+**❌ Missing module or Externally Managed Environment Error (`PEP 668`)**
+
+If you encounter an "externally-managed-environment" error on newer Linux distributions (like Ubuntu 23.04+ or Debian 12+), you can bypass the block safely for this tool:
 
 ```bash
-pip install -e .
+pip install -e . --break-system-packages
 python -m discn scan --targets "target" --ports "ports"
 ```
 
