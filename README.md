@@ -51,7 +51,7 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/YourUsername/NETSUVAX.git
+git clone https://github.com/suvscd-io/NETSUVAX.git
 cd NETSUVAX
 
 # Install dependencies
